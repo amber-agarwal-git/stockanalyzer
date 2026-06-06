@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
 import { SearchBox } from './components/SearchBox';
+import { SearchResult } from './types';
 import { StockChart } from './components/StockChart';
 import { RecommendationCard } from './components/RecommendationCard';
 import { ProsConsCard } from './components/ProsConsCard';
@@ -42,6 +43,10 @@ function DashboardContent() {
   const [activeTab, setActiveTab] = useState<'scores' | 'strategies' | 'screener'>('scores');
   const { data: activeStock, isLoading, isError, error, refetch } = useStockDetailsQuery(selectedSymbol);
 
+  // States for shared AI Search matching results
+  const [aiSearchHistory, setAiSearchHistory] = useState<SearchResult | null>(null);
+  const [isAiSearching, setIsAiSearching] = useState(false);
+
   return (
     <div className="min-h-screen pb-16 flex flex-col bg-bg-base transition-colors duration-300">
       
@@ -53,13 +58,20 @@ function DashboardContent() {
         {/* TAB 1: STOCK SCORES (Default Landing Page) */}
         {activeTab === 'scores' && (
           <div className="space-y-6">
-            {/* Search section */}
-            <section id="search-section" className="rounded-2xl glass-card p-5 sm:p-6 shadow-md shadow-black/5">
-              <SearchBox 
-                selectedSymbol={selectedSymbol} 
-                onSelectStock={(symbol) => setSelectedSymbol(symbol)} 
-              />
-            </section>
+            {/* Search Grid containing Left: Price Trend Tracker Search & Right: AI based Stocks Search */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              {/* Search section */}
+              <section id="search-section" className="lg:col-span-12 rounded-2xl glass-card p-4 sm:p-5 shadow-md shadow-black/5 flex flex-col justify-between">
+                <SearchBox 
+                  selectedSymbol={selectedSymbol} 
+                  onSelectStock={(symbol) => setSelectedSymbol(symbol)} 
+                  onAISearchChange={(history, searching) => {
+                    setAiSearchHistory(history);
+                    setIsAiSearching(searching);
+                  }}
+                />
+              </section>
+            </div>
 
             {/* Dynamic State Layout (Loading / Error / Main Stock Presentation) */}
             <div id="dashboard-content-area" className="transition-all duration-300">
@@ -70,7 +82,7 @@ function DashboardContent() {
                   {/* Primary Grid Skeletons */}
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     {/* Chart placeholder */}
-                    <div className="lg:col-span-8 h-80 rounded-2xl bg-white/5 border border-border-card/35 p-6 flex flex-col justify-between">
+                    <div className="lg:col-span-6 h-80 rounded-2xl bg-white/5 border border-border-card/35 p-6 flex flex-col justify-between">
                       <div className="flex justify-between items-center">
                         <div className="space-y-2">
                           <div className="h-4 w-48 bg-white/10 rounded" />
@@ -85,7 +97,7 @@ function DashboardContent() {
                     </div>
 
                     {/* Score slider placeholder */}
-                    <div className="lg:col-span-4 h-80 rounded-2xl bg-white/5 border border-border-card/35 p-6 space-y-4">
+                    <div className="lg:col-span-6 h-80 rounded-2xl bg-white/5 border border-border-card/35 p-6 space-y-4">
                       <div className="h-4 w-32 bg-white/10 rounded" />
                       <div className="h-16 w-full bg-white/15 rounded-xl" />
                       <div className="h-8 w-full bg-white/5 rounded-lg" />
@@ -136,13 +148,13 @@ function DashboardContent() {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                     
                     {/* 1 Year Trend Area Chart */}
-                    <div className="col-span-1 lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
+                    <div className="col-span-1 lg:col-span-6 xl:col-span-6 flex flex-col gap-6">
                       <StockChart stock={activeStock} />
                       <ProsConsCard prosCons={activeStock.recommendation.prosCons} />
                     </div>
 
                     {/* Weighted recommendation gauge + 4 score breakdowns vertically stacked */}
-                    <div className="col-span-1 lg:col-span-5 xl:col-span-4 flex flex-col gap-6">
+                    <div className="col-span-1 lg:col-span-6 xl:col-span-6 flex flex-col gap-6">
                       <RecommendationCard recommendation={activeStock.recommendation} />
                       
                       <div className="space-y-4">

@@ -27,20 +27,37 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           {/* Left Group: Logo, Platform Name & Mobile Controls */}
           <div className="flex items-center justify-between w-full md:w-auto">
             <div className="flex items-center space-x-3">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-accent-cyan via-accent-blue to-accent-purple shadow-lg p-0.5">
-                <div className="flex items-center justify-center w-full h-full bg-slate-950 rounded-lg text-accent-cyan">
-                  <TrendingUp className="w-5 h-5 animate-pulse" />
+              <Tooltip
+                content="Skip research fatigue, decide faster with smart scores"
+                position="bottom"
+              >
+                <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-accent-cyan via-accent-blue to-accent-purple shadow-lg p-0.5 cursor-help">
+                  <div className="flex items-center justify-center w-full h-full bg-slate-950 rounded-lg text-accent-cyan">
+                    <TrendingUp className="w-5 h-5 animate-pulse" />
+                  </div>
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent-cyan/40 to-accent-purple/40 blur-md -z-10" />
                 </div>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent-cyan/40 to-accent-purple/40 blur-md -z-10" />
-              </div>
+              </Tooltip>
               
               <div>
-                <h1 id="brand-title" className="text-lg sm:text-xl md:text-2xl font-bold font-sans tracking-tight bg-gradient-to-r from-accent-cyan via-accent-purple to-accent-blue bg-clip-text text-transparent">
-                  Stock Analyzer
-                </h1>
-                <p className="text-[10px] text-text-muted hidden sm:block font-medium">
-                  Premium Fintech Research Platform
-                </p>
+                <Tooltip
+                  content="Skip research fatigue, decide faster with smart scores"
+                  position="bottom"
+                >
+                  <h1 id="brand-title" className="text-lg sm:text-xl md:text-2xl font-bold font-sans tracking-tight bg-gradient-to-r from-accent-cyan via-accent-purple to-accent-blue bg-clip-text text-transparent cursor-help">
+                    Stock Analyzer
+                  </h1>
+                </Tooltip>
+                <div className="hidden sm:block">
+                  <Tooltip
+                    content="Skip research fatigue, decide faster with smart scores"
+                    position="bottom"
+                  >
+                    <p className="text-[10px] text-text-muted font-medium cursor-help">
+                      Stop Digging, Start Scoring
+                    </p>
+                  </Tooltip>
+                </div>
               </div>
             </div>
 
@@ -68,59 +85,74 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           {/* Navigation Tabs - Responsive layout centering tabs */}
           <nav 
             id="header-navigation-tabs" 
-            className="flex items-center justify-start md:justify-center space-x-1 p-1 rounded-xl bg-slate-100/70 dark:bg-zinc-900/70 border border-border-card/45 w-full md:w-auto overflow-x-auto no-scrollbar scroll-smooth"
+            className="flex items-center justify-start md:justify-center space-x-2 p-1 rounded-xl bg-slate-100/70 dark:bg-zinc-900/70 border border-border-card/45 w-full md:w-auto overflow-x-auto md:overflow-visible no-scrollbar scroll-smooth"
           >
-            <button
-              id="tab-stock-scores"
-              onClick={() => setActiveTab('scores')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                activeTab === 'scores'
-                  ? 'bg-white dark:bg-zinc-800 text-accent-cyan shadow-sm border border-black/5 dark:border-white/5 active-tab-scale scale-[1.02]'
-                  : 'text-text-muted hover:text-text-main hover:bg-white/5'
-              }`}
+            <Tooltip 
+              content="Proprietry 'Algorithm based scoring' (out of 10) on each possible aspects and models, along with Overall Score and Buy/Sell Signal." 
+              position="bottom"
             >
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>Stock Scores</span>
-            </button>
+              <button
+                id="tab-stock-scores"
+                onClick={() => setActiveTab('scores')}
+                className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-xs font-black uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  activeTab === 'scores'
+                    ? 'bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-500 text-slate-950 shadow-md shadow-cyan-400/25 border-transparent scale-102'
+                    : 'text-cyan-700 dark:text-cyan-300 bg-cyan-500/10 dark:bg-cyan-500/15 border border-cyan-400/20 hover:bg-cyan-500/20 hover:border-cyan-400/40 hover:text-cyan-800 dark:hover:text-cyan-200'
+                }`}
+              >
+                <TrendingUp className="w-3.5 h-3.5" />
+                <span>Stock Scores</span>
+              </button>
+            </Tooltip>
             
-            <button
-              id="tab-stock-strategies"
-              onClick={() => setActiveTab('strategies')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                activeTab === 'strategies'
-                  ? 'bg-white dark:bg-zinc-800 text-accent-purple shadow-sm border border-black/5 dark:border-white/5 active-tab-scale scale-[1.02]'
-                  : 'text-text-muted hover:text-text-main hover:bg-white/5'
-              }`}
+            <Tooltip
+              content="Find top stocks based on various famous financial strategies and algorithms."
+              position="bottom"
             >
-              <Compass className="w-3.5 h-3.5" />
-              <span>Stock picking Strategies</span>
-            </button>
+              <button
+                id="tab-stock-strategies"
+                onClick={() => setActiveTab('strategies')}
+                className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-xs font-black uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  activeTab === 'strategies'
+                    ? 'bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 text-white shadow-md shadow-purple-500/25 border-transparent scale-102'
+                    : 'text-purple-700 dark:text-purple-300 bg-purple-500/10 dark:bg-purple-500/15 border border-purple-400/20 hover:bg-purple-500/20 hover:border-purple-400/40 hover:text-purple-800 dark:hover:text-purple-200'
+                }`}
+              >
+                <Compass className="w-3.5 h-3.5" />
+                <span>Stock picking Strategies</span>
+              </button>
+            </Tooltip>
             
-            <button
-              id="tab-stock-screener"
-              onClick={() => setActiveTab('screener')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                activeTab === 'screener'
-                  ? 'bg-white dark:bg-zinc-800 text-accent-blue shadow-sm border border-black/5 dark:border-white/5 active-tab-scale scale-[1.02]'
-                  : 'text-text-muted hover:text-text-main hover:bg-white/5'
-              }`}
+            <Tooltip
+              content="Find stocks based on custom filter critereas."
+              position="bottom"
             >
-              <Filter className="w-3.5 h-3.5" />
-              <span>Stock Screener</span>
-            </button>
+              <button
+                id="tab-stock-screener"
+                onClick={() => setActiveTab('screener')}
+                className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg text-xs font-black uppercase tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  activeTab === 'screener'
+                    ? 'bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 text-white shadow-md shadow-blue-500/25 border-transparent scale-102'
+                    : 'text-blue-700 dark:text-blue-300 bg-blue-500/10 dark:bg-blue-500/15 border border-blue-400/20 hover:bg-blue-500/20 hover:border-blue-400/40 hover:text-blue-800 dark:hover:text-blue-200'
+                }`}
+              >
+                <Filter className="w-3.5 h-3.5" />
+                <span>Stock Screener</span>
+              </button>
+            </Tooltip>
           </nav>
 
           {/* Right Controls Group (Hidden on mobile, visible on md+) */}
           <div className="hidden md:flex items-center space-x-2 sm:space-x-4">
             
-            {/* Info Link with Hover Popup */}
+            {/* About Link with Hover Popup */}
             <Tooltip 
-              content="Platform overview: Access fundamental, technical, sectorial, and real-time momentum models with instant predictive recommendation scores for stock lists globally." 
+              content="AI platform under beta-testing, created by Amber Agarwal, Avik Deb, Suresh Murali (India)." 
               position="bottom"
             >
               <div id="info-link" className="flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-border-card text-xs font-semibold hover:border-accent-cyan hover:text-accent-cyan hover:bg-accent-cyan/10 transition-all cursor-help">
                 <HelpCircle className="w-4 h-4 text-accent-cyan" />
-                <span>Info</span>
+                <span>About</span>
               </div>
             </Tooltip>
 

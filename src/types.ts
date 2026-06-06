@@ -126,3 +126,16 @@ export interface StockSearchQuery {
   search: string;
   country: string;
 }
+
+export interface SearchResult {
+  query: string;
+  timestamp: string;
+  results: {
+    symbol: string;
+    name: string;
+    matchScore: string;
+    reasonBadge: string;
+    metrics: string;
+  }[];
+  insightSummary: string;
+}

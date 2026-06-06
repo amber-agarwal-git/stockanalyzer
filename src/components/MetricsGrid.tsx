@@ -28,7 +28,7 @@ interface MetricsGridProps {
 export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
   // Store expanded state for the 8 analytics cards
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({
-    fundamental: true, // open Fundamental by default
+    fundamental: false, // all closed by default
     technical: false,
     sector: false,
     momentum: false,
@@ -78,25 +78,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
         {/* Accordion header */}
         <div 
           onClick={() => toggleExpand('fundamental')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-cyan/15 text-accent-cyan">
-              <LineChart className="w-4 h-4" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-cyan/15 text-accent-cyan flex-shrink-0">
+              <LineChart className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Fundamental Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Fundamental Analysis</h3>
               <Tooltip content="Fundamental valuation checks: Examines earnings yields, P/E multiples, balance sheet leverages, book equity returns, and net global margins." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-cyan/15 border border-accent-cyan/35 text-accent-cyan font-mono">
-              Score: {stock.fundamentalScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-cyan/15 border border-accent-cyan/35 text-accent-cyan font-mono glow-pulse-cyan">
+              {stock.fundamentalScore}
             </span>
             <button 
               onClick={() => toggleExpand('fundamental')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-cyan/45 bg-accent-cyan/15 text-accent-cyan hover:bg-accent-cyan/25 cursor-pointer shadow-sm shadow-accent-cyan/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.fundamental ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -114,12 +114,12 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
-                  label="P/E Ratio" 
-                  value={stock.fundamentals.pe.value} 
+                  label="P/E Ratio"
+                  value={stock.fundamentals.pe.value}
                   info={stock.fundamentals.pe.info}
-                />
+                /> 
                 <ParameterRow 
                   label="Sector P/E" 
                   value={stock.fundamentals.sectorPe.value} 
@@ -177,25 +177,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
         {/* Accordion header */}
         <div 
           onClick={() => toggleExpand('technical')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-purple/15 text-accent-purple">
-              <Activity className="w-4 h-4 animate-pulse" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-purple/15 text-accent-purple flex-shrink-0">
+              <Activity className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Technical Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Technical Analysis</h3>
               <Tooltip content="Technical oscillators check: Calculates buying fatigue (RSI), moving average cross indicators (MACD), consolidated momentum volumes, and 52-week position percentile bands." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-purple/15 border border-accent-purple/35 text-accent-purple font-mono">
-              Score: {stock.technicalScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-purple/15 border border-accent-purple/35 text-accent-purple font-mono glow-pulse-purple">
+              {stock.technicalScore}
             </span>
             <button 
               onClick={() => toggleExpand('technical')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-purple/45 bg-accent-purple/15 text-accent-purple hover:bg-accent-purple/25 cursor-pointer shadow-sm shadow-accent-purple/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.technical ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -213,7 +213,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
                   label="RSI (14-Day Oscillator)" 
                   value={stock.technicals.rsi.value} 
@@ -251,25 +251,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
         {/* Accordion header */}
         <div 
           onClick={() => toggleExpand('sector')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-blue/15 text-accent-blue">
-              <PieChart className="w-4 h-4" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-blue/15 text-accent-blue flex-shrink-0">
+              <PieChart className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Sector Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Sector Analysis</h3>
               <Tooltip content="Peer group standings: Benchmarks the equity against industry sector valuations, sector compound growths, ROE percentiles, and median margin ranks." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-blue/15 border border-accent-blue/35 text-accent-blue font-mono">
-              Score: {stock.sectorScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-blue/15 border border-accent-blue/35 text-accent-blue font-mono glow-pulse-blue">
+              {stock.sectorScore}
             </span>
             <button 
               onClick={() => toggleExpand('sector')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-blue/45 bg-accent-blue/15 text-accent-blue hover:bg-accent-blue/25 cursor-pointer shadow-sm shadow-accent-blue/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.sector ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -287,7 +287,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
                   label="Sector P/E Percentile" 
                   value={stock.sector.pePercentile.value} 
@@ -325,25 +325,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
         {/* Accordion header */}
         <div 
           onClick={() => toggleExpand('momentum')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-green/15 text-accent-green">
-              <Gauge className="w-4 h-4" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-green/15 text-accent-green flex-shrink-0">
+              <Gauge className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Momentum Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Momentum Analysis</h3>
               <Tooltip content="Trend velocity parameters: Measures multi-month relative stock-price breakouts and comparative index performance (relative strength scaling factors)." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-green/15 border border-accent-green/35 text-accent-green font-mono">
-              Score: {stock.momentumScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-green/15 border border-accent-green/35 text-accent-green font-mono glow-pulse-green">
+              {stock.momentumScore}
             </span>
             <button 
               onClick={() => toggleExpand('momentum')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-green/45 bg-accent-green/15 text-accent-green hover:bg-accent-green/25 cursor-pointer shadow-sm shadow-accent-green/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.momentum ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -361,7 +361,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
                   label="Price Return 3M" 
                   value={stock.momentum.return3M.value} 
@@ -399,25 +399,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
       >
         <div 
           onClick={() => toggleExpand('growth')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-purple/15 text-accent-purple">
-              <TrendingUp className="w-4 h-4" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-purple/15 text-accent-purple flex-shrink-0">
+              <TrendingUp className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Growth Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Growth Analysis</h3>
               <Tooltip content="Growth velocity checks: Examines compound earnings growth rates, revenue CAGR over 3 years, free cash flows, and overall balance sheet health indicators." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-purple/15 border border-accent-purple/35 text-accent-purple font-mono">
-              Score: {stock.growthScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-purple/15 border border-accent-purple/35 text-accent-purple font-mono glow-pulse-purple">
+              {stock.growthScore}
             </span>
             <button 
               onClick={() => toggleExpand('growth')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-purple/45 bg-accent-purple/15 text-accent-purple hover:bg-accent-purple/25 cursor-pointer shadow-sm shadow-accent-purple/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.growth ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -434,7 +434,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
                   label="PEG Ratio" 
                   value={stock.growth.pegRatio.value} 
@@ -478,25 +478,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
       >
         <div 
           onClick={() => toggleExpand('valuation')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-blue/15 text-accent-blue">
-              <Coins className="w-4 h-4" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-blue/15 text-accent-blue flex-shrink-0">
+              <Coins className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Valuation Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Valuation Analysis</h3>
               <Tooltip content="Equity pricing multiples and conservative asset valuations: Computes Benjamin Graham index bounds, discounted cash flows, and EV/EBITDA models." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-blue/15 border border-accent-blue/35 text-accent-blue font-mono">
-              Score: {stock.valuationScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-blue/15 border border-accent-blue/35 text-accent-blue font-mono glow-pulse-blue">
+              {stock.valuationScore}
             </span>
             <button 
               onClick={() => toggleExpand('valuation')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-blue/45 bg-accent-blue/15 text-accent-blue hover:bg-accent-blue/25 cursor-pointer shadow-sm shadow-accent-blue/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.valuation ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -513,7 +513,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
                   label="Graham Number" 
                   value={stock.valuation.grahamNumber.value} 
@@ -550,25 +550,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
       >
         <div 
           onClick={() => toggleExpand('sentimental')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-cyan/15 text-accent-cyan">
-              <MessageSquare className="w-4 h-4" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-cyan/15 text-accent-cyan flex-shrink-0">
+              <MessageSquare className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Sentimental Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Sentimental Analysis</h3>
               <Tooltip content="Market perception and option statistics: Evaluates online news media coverage with NLP semantic models, derivative pricing ratios, and ownership percentages." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-cyan/15 border border-accent-cyan/35 text-accent-cyan font-mono">
-              Score: {stock.sentimentalScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-cyan/15 border border-accent-cyan/35 text-accent-cyan font-mono glow-pulse-cyan">
+              {stock.sentimentalScore}
             </span>
             <button 
               onClick={() => toggleExpand('sentimental')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-cyan/45 bg-accent-cyan/15 text-accent-cyan hover:bg-accent-cyan/25 cursor-pointer shadow-sm shadow-accent-cyan/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.sentimental ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -585,7 +585,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
                   label="NLP tone score on recent news" 
                   value={stock.sentimental.nlpToneScore.value} 
@@ -629,25 +629,25 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
       >
         <div 
           onClick={() => toggleExpand('riskReward')} 
-          className="p-5 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
+          className="p-2 sm:p-3 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-all select-none rounded-t-2xl"
         >
-          <div className="flex items-center space-x-3">
-            <div className="p-2 rounded-xl bg-accent-green/15 text-accent-green">
-              <Scale className="w-4 h-4" />
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-2 rounded-xl bg-accent-green/15 text-accent-green flex-shrink-0">
+              <Scale className="w-4 h-4 animate-bounce" />
             </div>
-            <div className="flex items-center space-x-1.5">
-              <h3 className="text-sm sm:text-base font-bold tracking-tight text-text-main">Risk/Reward Analysis</h3>
+            <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
+              <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Risk/Reward Analysis</h3>
               <Tooltip content="Financial risk metrics and pricing models: Gauges volatility indices, standard deviations, risk-adjusted yields, and calculated DCF margins." position="bottom" />
             </div>
           </div>
 
           <div className="flex items-center space-x-3" onClick={(e) => e.stopPropagation()}>
-            <span className="px-3 py-1 rounded-lg text-xs font-black bg-accent-green/15 border border-accent-green/35 text-accent-green font-mono">
-              Score: {stock.riskRewardScore}/10
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-lg text-xs xs:text-sm md:text-base font-black bg-accent-green/15 border border-accent-green/35 text-accent-green font-mono glow-pulse-green">
+              {stock.riskRewardScore}
             </span>
             <button 
               onClick={() => toggleExpand('riskReward')}
-              className="p-1.5 rounded-lg border border-border-card text-text-muted hover:text-text-main hover:bg-white/5 cursor-pointer"
+              className="p-1.5 rounded-lg border border-accent-green/45 bg-accent-green/15 text-accent-green hover:bg-accent-green/25 cursor-pointer shadow-sm shadow-accent-green/10 transition-all font-bold"
               title="Expand Details"
             >
               {expandedCards.riskReward ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -664,7 +664,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className="p-5 pt-0 border-t border-border-card/30 space-y-1">
+              <div className="p-3 pt-0 border-t border-border-card/30 space-y-0.5">
                 <ParameterRow 
                   label="Beta (1Y)" 
                   value={stock.riskReward.beta1Y.value} 

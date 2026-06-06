@@ -1,0 +1,6 @@
+{
+  "name": "Stock Analyzer",
+  "description": "A premium fintech equity stock analysis platform with deep fundamental, technical, sector, and momentum ratings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

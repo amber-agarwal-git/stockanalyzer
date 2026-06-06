@@ -160,7 +160,7 @@ function DashboardContent() {
                       <div className="space-y-4">
                         <div className="flex items-center space-x-2 pl-1">
                           <BarChart4 className="w-4 h-4 text-accent-purple" />
-                          <h3 className="font-bold tracking-tight text-text-main text-sm">Comprehensive Score Overview</h3>
+                          <h3 className="font-bold tracking-tight text-text-main text-sm">Algorithm Based total Score and breakup, per Aspects :</h3>
                           <span className="text-[10px] bg-accent-purple/10 text-accent-purple font-mono px-2 py-0.5 rounded border border-accent-purple/20">
                             8 Models
                           </span>

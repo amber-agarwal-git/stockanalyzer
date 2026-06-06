@@ -21,7 +21,7 @@ export const ProsConsCard: React.FC<ProsConsCardProps> = ({ prosCons }) => {
           <HelpCircle className="w-4 h-4" />
         </div>
         <div>
-          <h3 className="text-sm sm:text-base font-bold font-sans tracking-tight">Analytical Strengths & Vulnerabilities</h3>
+          <h3 className="text-sm sm:text-base font-bold font-sans tracking-tight">SWOT Analysis: Strength & Weakness</h3>
           <p className="text-[10px] sm:text-xs text-text-muted">Consolidated core positive indicators and system risk signals</p>
         </div>
       </div>

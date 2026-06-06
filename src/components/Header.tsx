@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               
               <div>
                 <Tooltip
-                  content="Skip research fatigue, decide faster with smart scores"
+                  content="Skip research fatigue, decide faster with smart scores."
                   position="bottom"
                 >
                   <h1 id="brand-title" className="text-lg sm:text-xl md:text-2xl font-bold font-sans tracking-tight bg-gradient-to-r from-accent-cyan via-accent-purple to-accent-blue bg-clip-text text-transparent cursor-help">

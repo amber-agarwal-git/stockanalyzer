@@ -95,7 +95,7 @@ export const StockChart: React.FC<StockChartProps> = ({ stock }) => {
             <Calendar className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-sm sm:text-base font-bold font-sans tracking-tight">Price Trend Tracker</h3>
+            <h3 className="text-sm sm:text-base font-bold font-sans tracking-tight">Charts: Price, Volume</h3>
             <p className="text-[10px] sm:text-xs text-text-muted">1-year historical chart & consolidated transaction volumes</p>
           </div>
         </div>

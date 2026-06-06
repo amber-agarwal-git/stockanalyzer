@@ -69,7 +69,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
       {/* 1 & 2: Header title showing Buy/Hold/Sell Signal center-aligned & custom warning with tooltip */}
       <div className="flex flex-col items-center justify-center text-center relative py-0 border-b border-white/5 pb-1">
         <span className="text-[9px] font-black uppercase tracking-widest text-text-muted mb-0.5">
-          Algorithm Based Recommendation
+          Algorithm Based total Score and breakup, per Aspects
         </span>
         
         <div className="flex items-center justify-center space-x-2">

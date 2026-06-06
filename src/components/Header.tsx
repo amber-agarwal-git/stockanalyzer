@@ -6,9 +6,14 @@
 import React, { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Tooltip } from './Tooltip';
-import { Sun, Moon, Settings, TrendingUp, HelpCircle, X, Check, Globe } from 'lucide-react';
+import { Sun, Moon, Settings, TrendingUp, HelpCircle, X, Check, Globe, Compass, Filter } from 'lucide-react';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
   const { theme, toggleTheme } = useTheme();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [apiDelay, setApiDelay] = useState(350);
@@ -16,30 +21,97 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header id="app-header" className="sticky top-0 z-40 w-full glass-card border-b border-border-card bg-opacity-80 backdrop-blur-md px-4 sm:px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <header id="app-header" className="sticky top-0 z-40 w-full glass-card border-b border-border-card bg-opacity-80 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
           
-          {/* Logo & Platform Name */}
-          <div className="flex items-center space-x-3">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-accent-cyan via-accent-blue to-accent-purple shadow-lg p-0.5">
-              <div className="flex items-center justify-center w-full h-full bg-slate-950 rounded-lg text-accent-cyan">
-                <TrendingUp className="w-5 h-5 animate-pulse" />
+          {/* Left Group: Logo, Platform Name & Mobile Controls */}
+          <div className="flex items-center justify-between w-full md:w-auto">
+            <div className="flex items-center space-x-3">
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-accent-cyan via-accent-blue to-accent-purple shadow-lg p-0.5">
+                <div className="flex items-center justify-center w-full h-full bg-slate-950 rounded-lg text-accent-cyan">
+                  <TrendingUp className="w-5 h-5 animate-pulse" />
+                </div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent-cyan/40 to-accent-purple/40 blur-md -z-10" />
               </div>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent-cyan/40 to-accent-purple/40 blur-md -z-10" />
+              
+              <div>
+                <h1 id="brand-title" className="text-lg sm:text-xl md:text-2xl font-bold font-sans tracking-tight bg-gradient-to-r from-accent-cyan via-accent-purple to-accent-blue bg-clip-text text-transparent">
+                  Stock Analyzer
+                </h1>
+                <p className="text-[10px] text-text-muted hidden sm:block font-medium">
+                  Premium Fintech Research Platform
+                </p>
+              </div>
             </div>
-            
-            <div>
-              <h1 id="brand-title" className="text-xl sm:text-2xl font-bold font-sans tracking-tight bg-gradient-to-r from-accent-cyan via-accent-purple to-accent-blue bg-clip-text text-transparent">
-                Stock Analyzer
-              </h1>
-              <p className="text-[10px] sm:text-xs text-text-muted hidden sm:block">
-                Premium Fintech Research Platform
-              </p>
+
+            {/* Mobile Controls Group (Only visible on screens < md) */}
+            <div className="md:hidden flex items-center space-x-1.5">
+              <button
+                id="mobile-settings-trigger"
+                onClick={() => setIsSettingsOpen(true)}
+                className="p-2 rounded-lg border border-border-card text-text-muted hover:border-accent-purple hover:text-accent-purple transition-all cursor-pointer"
+                title="API Settings"
+              >
+                <Settings className="w-4 h-4" />
+              </button>
+              <button
+                id="mobile-theme-trigger"
+                onClick={() => toggleTheme()}
+                className="p-2 rounded-lg border border-border-card text-text-muted hover:border-accent-cyan transition-all cursor-pointer"
+                title="Toggle Theme"
+              >
+                {theme === 'light' ? <Moon className="w-4 h-4 text-slate-600" /> : <Sun className="w-4 h-4 text-amber-500" />}
+              </button>
             </div>
           </div>
 
-          {/* Right Controls Group */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          {/* Navigation Tabs - Responsive layout centering tabs */}
+          <nav 
+            id="header-navigation-tabs" 
+            className="flex items-center justify-start md:justify-center space-x-1 p-1 rounded-xl bg-slate-100/70 dark:bg-zinc-900/70 border border-border-card/45 w-full md:w-auto overflow-x-auto no-scrollbar scroll-smooth"
+          >
+            <button
+              id="tab-stock-scores"
+              onClick={() => setActiveTab('scores')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                activeTab === 'scores'
+                  ? 'bg-white dark:bg-zinc-800 text-accent-cyan shadow-sm border border-black/5 dark:border-white/5 active-tab-scale scale-[1.02]'
+                  : 'text-text-muted hover:text-text-main hover:bg-white/5'
+              }`}
+            >
+              <TrendingUp className="w-3.5 h-3.5" />
+              <span>Stock Scores</span>
+            </button>
+            
+            <button
+              id="tab-stock-strategies"
+              onClick={() => setActiveTab('strategies')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                activeTab === 'strategies'
+                  ? 'bg-white dark:bg-zinc-800 text-accent-purple shadow-sm border border-black/5 dark:border-white/5 active-tab-scale scale-[1.02]'
+                  : 'text-text-muted hover:text-text-main hover:bg-white/5'
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5" />
+              <span>Stock picking Strategies</span>
+            </button>
+            
+            <button
+              id="tab-stock-screener"
+              onClick={() => setActiveTab('screener')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                activeTab === 'screener'
+                  ? 'bg-white dark:bg-zinc-800 text-accent-blue shadow-sm border border-black/5 dark:border-white/5 active-tab-scale scale-[1.02]'
+                  : 'text-text-muted hover:text-text-main hover:bg-white/5'
+              }`}
+            >
+              <Filter className="w-3.5 h-3.5" />
+              <span>Stock Screener</span>
+            </button>
+          </nav>
+
+          {/* Right Controls Group (Hidden on mobile, visible on md+) */}
+          <div className="hidden md:flex items-center space-x-2 sm:space-x-4">
             
             {/* Info Link with Hover Popup */}
             <Tooltip 

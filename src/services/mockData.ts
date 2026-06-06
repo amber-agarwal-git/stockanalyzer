@@ -39,6 +39,10 @@ export const MOCK_STOCKS: StockData[] = [
     technicalScore: 8,
     sectorScore: 8,
     momentumScore: 9,
+    growthScore: 4,
+    valuationScore: 7,
+    sentimentalScore: 7,
+    riskRewardScore: 8,
     recommendation: {
       score: 8.2, // out of 10 -> Green (Buy)
       label: "Buy",
@@ -84,6 +88,32 @@ export const MOCK_STOCKS: StockData[] = [
       return12M: { value: "120%", info: "12-Month Price Change: Year-over-year capitalization return outperforming bench indices." },
       relativeStrength: { value: 20, info: "RS Index Trend: Calculated strength relative to domestic index performance. At 20, it showcases a dominant outperforming trend." }
     },
+    growth: {
+      pegRatio: { value: 1.1, info: "PEG Ratio: Price-to-Earnings-to-Growth Ratio. A value of 1.1 indicates fairly valued relative to earnings growth." },
+      revenueCagr3Y: { value: "20%", info: "Revenue CAGR 3Y: Compound Annual Growth Rate of Revenue over the last 3 years." },
+      epsCagr3Y: { value: "15%", info: "EPS CAGR 3Y: Compound Annual Growth Rate of Earnings Per Share over the last 3 years." },
+      fcfGrowthYoY: { value: "10%", info: "Free Cash Flow Growth YoY: Year over Year growth in Free Cash Flow." },
+      piotroskiScore: { value: 8, info: "Piotroski Score: Piotroski Score out of 9. An 8 indicates extremely strong financial health." }
+    },
+    valuation: {
+      grahamNumber: { value: 10, info: "Graham Number: The classical Graham number pricing benchmark." },
+      dcfIntrinsicValue: { value: 2000, info: "DCF-based intrinsic value: Intrinsic value estimate based on corporate free cash flow models discounted to present value." },
+      evEbitda: { value: 15, info: "EV/EBITDA: Enterprise value divided by EBITDA. High performance valuation index." },
+      dividendYield: { value: "1.2%", info: "Dividend Yield: Represents dividend payments compared directly to local price metrics." }
+    },
+    sentimental: {
+      nlpToneScore: { value: 1, info: "NLP tone score on recent news: Scale from -1 (negative) to +1 (positive)." },
+      analystConsensus: { value: "Strong Buy", info: "Analyst Avg. Consensus: Aggregated consensus rating across institutional analyst consensus polls." },
+      putCallRatio: { value: 0.8, info: "Put/Call Ratio: Below 1.0 represents general bull trend option coverage hedges." },
+      institutionalOwnership: { value: "20%", info: "Institutional Ownership: Holding percentage across mutual funds and asset managers." },
+      promoterOwnership: { value: "25%", info: "Promoter Ownership: Shares held by parent company promoters." }
+    },
+    riskReward: {
+      beta1Y: { value: 0.8, info: "Beta (1Y): Measures equity sensitivity relative to benchmark indexing." },
+      volatilityStdDev: { value: 2, info: "Volatility (Std Dev): Daily standard deviation pricing bounds." },
+      dcfUpside: { value: 0.8, info: "DCF Upside: Represents percentage upside based on DCF valuation metrics." },
+      sharpeRatio: { value: 1.2, info: "Sharpe Ratio: Measures excess return output relative to volatility indexes." }
+    },
     historicalData: generateHistoricalData(1800, 0.4, 24)
   },
   {
@@ -99,6 +129,10 @@ export const MOCK_STOCKS: StockData[] = [
     technicalScore: 6,
     sectorScore: 9,
     momentumScore: 7,
+    growthScore: 6,
+    valuationScore: 5,
+    sentimentalScore: 8,
+    riskRewardScore: 7,
     recommendation: {
       score: 7.5, // Hold/Buy transition -> Strong Hold
       label: "Hold",
@@ -144,6 +178,32 @@ export const MOCK_STOCKS: StockData[] = [
       return12M: { value: "28%", info: "12-Month Return: Modest yearly returns matching benchmark performance index." },
       relativeStrength: { value: -5, info: "RS Index Trend: Underperforming standard tech index performance levels slightly over 90 days." }
     },
+    growth: {
+      pegRatio: { value: 1.5, info: "PEG Ratio: Price-to-Earnings-to-Growth Ratio. A value of 1.5 indicates moderate premium relative to growth." },
+      revenueCagr3Y: { value: "12%", info: "Revenue CAGR 3Y: Stable Compound Annual Growth Rate of Revenue." },
+      epsCagr3Y: { value: "14%", info: "EPS CAGR 3Y: Robust Earnings Per Share compound annual growth." },
+      fcfGrowthYoY: { value: "8%", info: "Free Cash Flow Growth YoY: Solid cash conversion stream expansion." },
+      piotroskiScore: { value: 7, info: "Piotroski Score: High rank indicates strong financial health parameters." }
+    },
+    valuation: {
+      grahamNumber: { value: 80, info: "Graham Number represents traditional intrinsic value calculation." },
+      dcfIntrinsicValue: { value: 190, info: "DCF Intrinsic Value: Estimated discounted present value of expected cash flows." },
+      evEbitda: { value: 22, info: "EV/EBITDA multiple reflects premium consumer technology valuations." },
+      dividendYield: { value: "0.5%", info: "Dividend Yield: Returns paid as dividends relative to price." }
+    },
+    sentimental: {
+      nlpToneScore: { value: 0.6, info: "NLP tone score on recent news indicating positive corporate positioning." },
+      analystConsensus: { value: "Buy", info: "Analyst Avg. Consensus: Aggregated recommendation is a solid Buy." },
+      putCallRatio: { value: 0.65, info: "Put/Call Ratio representing highly bullish structures." },
+      institutionalOwnership: { value: "58%", info: "Institutional Ownership: Deep institutional holding profile." },
+      promoterOwnership: { value: "1%", info: "Promoter Ownership: Shares held by active executive insiders." }
+    },
+    riskReward: {
+      beta1Y: { value: 1.05, info: "Beta (1Y) indicates return volatility inline with market indices." },
+      volatilityStdDev: { value: 1.5, info: "Volatility (Std Dev) representing steady low-variance trading profiles." },
+      dcfUpside: { value: 0.15, info: "DCF Upside represents percentage of intrinsic vs outer valuation gains." },
+      sharpeRatio: { value: 1.5, info: "Sharpe Ratio showing positive risk-adjusted performance returns." }
+    },
     historicalData: generateHistoricalData(145, 0.22, 24)
   },
   {
@@ -159,6 +219,10 @@ export const MOCK_STOCKS: StockData[] = [
     technicalScore: 7,
     sectorScore: 6,
     momentumScore: 8,
+    growthScore: 8,
+    valuationScore: 4,
+    sentimentalScore: 6,
+    riskRewardScore: 5,
     recommendation: {
       score: 6.5, // Hold/Buy border
       label: "Hold",
@@ -204,6 +268,32 @@ export const MOCK_STOCKS: StockData[] = [
       return12M: { value: "45%", info: "12-Month Return: Healthy long-term trend matching corporate volume growth goals." },
       relativeStrength: { value: 8, info: "RS Index Trend: Positive trend relative to general automotive indices." }
     },
+    growth: {
+      pegRatio: { value: 2.1, info: "PEG Ratio: Reflects high premium pricing relative to its electric vector transition speed." },
+      revenueCagr3Y: { value: "35%", info: "Revenue CAGR 3Y: Immense compound annual expansion speed." },
+      epsCagr3Y: { value: "28%", info: "EPS CAGR 3Y: Solid operational compound earnings expansion statistics." },
+      fcfGrowthYoY: { value: "12%", info: "Free Cash Flow Growth YoY: Upward cash scaling from high volume model sales." },
+      piotroskiScore: { value: 6, info: "Piotroski Score: Moderate score reflecting heavy factory investment capital demands." }
+    },
+    valuation: {
+      grahamNumber: { value: 45, info: "Graham Number indicating historical pricing value thresholds." },
+      dcfIntrinsicValue: { value: 210, info: "DCF Intrinsic Value based on long-range autonomous and supercomputing growth modules." },
+      evEbitda: { value: 38, info: "EV/EBITDA multiple reflecting premium technical and battery infrastructure leadership." },
+      dividendYield: { value: "0%", info: "Dividend Yield: Distributes 100% of capital towards operational expansions." }
+    },
+    sentimental: {
+      nlpToneScore: { value: 0.2, info: "NLP tone score indicating highly volatile public relations and executive press cycles." },
+      analystConsensus: { value: "Hold", info: "Analyst Avg. Consensus represents a cautious Hold tier." },
+      putCallRatio: { value: 1.1, info: "Put/Call Ratio representing derivative options shorting interest profiles." },
+      institutionalOwnership: { value: "44%", info: "Institutional Ownership: Holding percentage across mutual funds and trackers." },
+      promoterOwnership: { value: "13%", info: "Promoter Ownership: Concentrated equity held by directors & key insiders." }
+    },
+    riskReward: {
+      beta1Y: { value: 1.6, info: "Beta (1Y) indicates elevated volatility, outperforming indexing shifts in bulls and bears." },
+      volatilityStdDev: { value: 3.5, info: "Volatility (Std Dev) reflects steep, active price osculation grids." },
+      dcfUpside: { value: -0.05, info: "DCF Upside indicating standard market trading premiums relative to baseline intrinsic models." },
+      sharpeRatio: { value: 0.8, info: "Sharpe Ratio reflecting moderate risk-weighted outcome indices." }
+    },
     historicalData: generateHistoricalData(200, 0.12, 24)
   },
   {
@@ -219,6 +309,10 @@ export const MOCK_STOCKS: StockData[] = [
     technicalScore: 9,
     sectorScore: 7,
     momentumScore: 9,
+    growthScore: 9,
+    valuationScore: 8,
+    sentimentalScore: 9,
+    riskRewardScore: 8,
     recommendation: {
       score: 8.8, // out of 10 -> Green (Buy)
       label: "Buy",
@@ -264,6 +358,32 @@ export const MOCK_STOCKS: StockData[] = [
       return12M: { value: "165%", info: "12-Month Return: World-class annual charts beating tech index averages." },
       relativeStrength: { value: 28, info: "RS Index Trend: At 28, it exhibits incredible sector outperformance and market leadership." }
     },
+    growth: {
+      pegRatio: { value: 0.8, info: "PEG Ratio: Deep undervaluation relative to its high compound earnings expansion." },
+      revenueCagr3Y: { value: "22%", info: "Revenue CAGR 3Y: Robust top-line compound expansion rate." },
+      epsCagr3Y: { value: "45%", info: "EPS CAGR 3Y: Tremendous bottom-line compound annual acceleration." },
+      fcfGrowthYoY: { value: "32%", info: "Free Cash Flow Growth YoY: Stellar de-leveraging cash accumulation." },
+      piotroskiScore: { value: 8, info: "Piotroski Score: Exceptional health reflecting successful corporate turnaround." }
+    },
+    valuation: {
+      grahamNumber: { value: 1100, info: "Graham Number represents conservative index threshold." },
+      dcfIntrinsicValue: { value: 1200, info: "DCF Intrinsic Value: Estimated discounted present value of expected cash flows." },
+      evEbitda: { value: 9.5, info: "EV/EBITDA multiple indicating high value compared to regional peers." },
+      dividendYield: { value: "1.5%", info: "Dividend Yield: Return paid relative to the stock price." }
+    },
+    sentimental: {
+      nlpToneScore: { value: 0.9, info: "NLP tone score showing stellar positive comments across global broker coverage." },
+      analystConsensus: { value: "Strong Buy", info: "Analyst Avg. Consensus consensus score across major institutional research houses." },
+      putCallRatio: { value: 0.7, info: "Put/Call Ratio showing deep call option volume accumulation." },
+      institutionalOwnership: { value: "18%", info: "Institutional Ownership: Percentage of stock owned by funds and investment institutions." },
+      promoterOwnership: { value: "46%", info: "Promoter Ownership: Shares held by key promoter groups (Tata Sons)." }
+    },
+    riskReward: {
+      beta1Y: { value: 1.25, info: "Beta (1Y) indicates moderate cyclicality index." },
+      volatilityStdDev: { value: 2.4, info: "Volatility (Std Dev) represents average trading day variance thresholds." },
+      dcfUpside: { value: 0.35, info: "DCF Upside represents potential gain compared to intrinsic value." },
+      sharpeRatio: { value: 1.4, info: "Sharpe Ratio showing strong risk-adjusted returns." }
+    },
     historicalData: generateHistoricalData(350, 1.7, 24)
   },
   {
@@ -279,6 +399,10 @@ export const MOCK_STOCKS: StockData[] = [
     technicalScore: 8,
     sectorScore: 9,
     momentumScore: 10,
+    growthScore: 10,
+    valuationScore: 5,
+    sentimentalScore: 9,
+    riskRewardScore: 9,
     recommendation: {
       score: 9.1, // out of 10 -> Green (Buy)
       label: "Buy",
@@ -324,6 +448,32 @@ export const MOCK_STOCKS: StockData[] = [
       return12M: { value: "220%", info: "12-Month Return: Extraordinary annual outperformance leading the global charts." },
       relativeStrength: { value: 35, info: "RS Index Trend: Extreme relative outperformance compared to standard indices." }
     },
+    growth: {
+      pegRatio: { value: 1.2, info: "PEG Ratio: Near fair price despite triple digit growth velocities." },
+      revenueCagr3Y: { value: "110%", info: "Revenue CAGR 3Y: Unprecedented historical revenue expansion speed." },
+      epsCagr3Y: { value: "140%", info: "EPS CAGR 3Y: World-leading earnings growth rate." },
+      fcfGrowthYoY: { value: "85%", info: "Free Cash Flow Growth YoY: Massive cash conversion stream expansion." },
+      piotroskiScore: { value: 9, info: "Piotroski Score: Flawless status reflecting supreme financial health." }
+    },
+    valuation: {
+      grahamNumber: { value: 120, info: "Graham Number represents conservative index threshold." },
+      dcfIntrinsicValue: { value: 520, info: "DCF Intrinsic Value: Present value estimation based on active chip ordering backlogs." },
+      evEbitda: { value: 28, info: "EV/EBITDA multiple reflecting premium AI compute leadership valuations." },
+      dividendYield: { value: "0.02%", info: "Dividend Yield: Maintained for compliance as all cash is reinvested." }
+    },
+    sentimental: {
+      nlpToneScore: { value: 0.95, info: "NLP tone score showing near-perfect positive sentiment comments across media." },
+      analystConsensus: { value: "Strong Buy", info: "Analyst Avg. Consensus consensus score across major institutional research houses." },
+      putCallRatio: { value: 0.75, info: "Put/Call Ratio: Deep institutional call accumulation." },
+      institutionalOwnership: { value: "65%", info: "Institutional Ownership: World-wide mutual funds backing profile." },
+      promoterOwnership: { value: "4%", info: "Promoter Ownership: Held directly by founders and key engineering team members." }
+    },
+    riskReward: {
+      beta1Y: { value: 1.75, info: "Beta (1Y) indicating fast movement relative to benchmark movements." },
+      volatilityStdDev: { value: 3.2, info: "Volatility (Std Dev) representing active day trading ranges." },
+      dcfUpside: { value: 0.25, info: "DCF Upside represents potential gain compared to intrinsic value." },
+      sharpeRatio: { value: 2.2, info: "Sharpe Ratio reflecting industry-leading risk-adjusted outputs." }
+    },
     historicalData: generateHistoricalData(150, 2.2, 24)
   },
   {
@@ -339,6 +489,10 @@ export const MOCK_STOCKS: StockData[] = [
     technicalScore: 5,
     sectorScore: 8,
     momentumScore: 6,
+    growthScore: 5,
+    valuationScore: 7,
+    sentimentalScore: 6,
+    riskRewardScore: 6,
     recommendation: {
       score: 6.8, // Hold
       label: "Hold",
@@ -383,6 +537,32 @@ export const MOCK_STOCKS: StockData[] = [
       return6M: { value: "8%", info: "6-Month Return: Moderate increase aligned with overall regional gains." },
       return12M: { value: "15%", info: "12-Month Return: Steady performance reflecting stable equity properties." },
       relativeStrength: { value: -12, info: "RS Index Trend: Relative underperformance against active tech indices over past three quarters." }
+    },
+    growth: {
+      pegRatio: { value: 1.8, info: "PEG Ratio: Price-to-Earnings-to-Growth Ratio. A value of 1.8 reflects standard large consulting multiples." },
+      revenueCagr3Y: { value: "10%", info: "Revenue CAGR 3Y: Healthy stable compound expansion." },
+      epsCagr3Y: { value: "9%", info: "EPS CAGR 3Y: Stable income-generating EPS returns." },
+      fcfGrowthYoY: { value: "5%", info: "Free Cash Flow Growth YoY: Standard defensive cash conversion speed." },
+      piotroskiScore: { value: 7, info: "Piotroski Score: High rank indicates strong financial health parameters." }
+    },
+    valuation: {
+      grahamNumber: { value: 1100, info: "Graham Number represents conservative index threshold." },
+      dcfIntrinsicValue: { value: 1550, info: "DCF Intrinsic Value: Estimated discounted present value of expected cash flows." },
+      evEbitda: { value: 18, info: "EV/EBITDA multiple matching regional consulting averages." },
+      dividendYield: { value: "2.8%", info: "Dividend Yield: Represents stellar quarterly payouts over trading price ratios." }
+    },
+    sentimental: {
+      nlpToneScore: { value: 0.3, info: "NLP tone score showing stable neutral news commentaries." },
+      analystConsensus: { value: "Hold", info: "Analyst Avg. Consensus consensus score reflects general sector stabilization expectations." },
+      putCallRatio: { value: 0.95, info: "Put/Call Ratio: Neutral sentiment in derivatives market." },
+      institutionalOwnership: { value: "38%", info: "Institutional Ownership: Deep insurance and pension fund backings." },
+      promoterOwnership: { value: "15%", info: "Promoter Ownership: Shares held by active executive founders." }
+    },
+    riskReward: {
+      beta1Y: { value: 0.95, info: "Beta (1Y) showing highly defensive profile relative to market moves." },
+      volatilityStdDev: { value: 1.8, info: "Volatility (Std Dev) representing steady low-variance trading profiles." },
+      dcfUpside: { value: 0.1, info: "DCF Upside represents percentage of intrinsic vs outer valuation gains." },
+      sharpeRatio: { value: 1.1, info: "Sharpe Ratio showing positive risk-adjusted performance returns." }
     },
     historicalData: generateHistoricalData(1200, 0.18, 24)
   }

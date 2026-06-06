@@ -47,6 +47,36 @@ export interface MomentumMetrics {
   relativeStrength: MetricDefinition;
 }
 
+export interface GrowthMetrics {
+  pegRatio: MetricDefinition;
+  revenueCagr3Y: MetricDefinition;
+  epsCagr3Y: MetricDefinition;
+  fcfGrowthYoY: MetricDefinition;
+  piotroskiScore: MetricDefinition;
+}
+
+export interface ValuationMetrics {
+  grahamNumber: MetricDefinition;
+  dcfIntrinsicValue: MetricDefinition;
+  evEbitda: MetricDefinition;
+  dividendYield: MetricDefinition;
+}
+
+export interface SentimentalMetrics {
+  nlpToneScore: MetricDefinition;
+  analystConsensus: MetricDefinition;
+  putCallRatio: MetricDefinition;
+  institutionalOwnership: MetricDefinition;
+  promoterOwnership: MetricDefinition;
+}
+
+export interface RiskRewardMetrics {
+  beta1Y: MetricDefinition;
+  volatilityStdDev: MetricDefinition;
+  dcfUpside: MetricDefinition;
+  sharpeRatio: MetricDefinition;
+}
+
 export interface ProsCons {
   pros: string[];
   cons: string[];
@@ -71,11 +101,19 @@ export interface StockData {
   technicalScore: number;
   sectorScore: number;
   momentumScore: number;
+  growthScore: number;
+  valuationScore: number;
+  sentimentalScore: number;
+  riskRewardScore: number;
   recommendation: RecommendationInfo;
   fundamentals: FundametalMetrics;
   technicals: TechnicalMetrics;
   sector: SectorMetrics;
   momentum: MomentumMetrics;
+  growth: GrowthMetrics;
+  valuation: ValuationMetrics;
+  sentimental: SentimentalMetrics;
+  riskReward: RiskRewardMetrics;
   historicalData: PricePoint[];
 }
 

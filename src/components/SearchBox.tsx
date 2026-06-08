@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Search, Globe, X, TrendingUp, Sparkles, Loader2, Lock, AlertCircle } from 'lucide-react';
+import { Search, Globe, X, TrendingUp, Sparkles, Loader2, Lock, AlertCircle, Bookmark } from 'lucide-react';
 import { MOCK_STOCKS } from '../services/mockData';
 import { StockData, SearchResult } from '../types';
 
@@ -315,7 +315,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ onSelectStock, selectedSym
       <div className="border-t border-white/5 pt-3.5 mt-3 space-y-2.5">
         <div className="flex justify-between items-center text-[9px] font-bold tracking-wider uppercase">
           <span className="text-text-muted flex items-center space-x-1">
-            <Sparkles className="w-9 h-9 text-accent-cyan animate-pulse" />
+            <Sparkles className="w-[18px] h-[18px] text-accent-cyan animate-pulse" />
             <span> 'OR' Find top 10 stocks, based on below inputted criterea or themes : </span>
           </span>
           <span className={queryText.length > 85 ? "text-accent-red" : "text-text-muted"}>
@@ -418,6 +418,12 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ onSelectStock, selectedSym
         <div id="search-active-ticker-feedback" className="flex flex-wrap items-center justify-between border-t border-border-card pt-2.5 pb-0.5">
           <div>
             <div className="flex items-center space-x-2">
+              <button 
+                className="p-1 rounded-full text-text-muted hover:text-accent-cyan hover:bg-accent-cyan/10 transition-colors"
+                aria-label="Add to watchlist"
+              >
+                <Bookmark className="w-4 h-4" />
+              </button>
               <h2 className="text-sm sm:text-base font-extrabold tracking-tight font-sans">
                 {currentStock.name}
               </h2>

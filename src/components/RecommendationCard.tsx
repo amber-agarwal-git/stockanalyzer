@@ -112,12 +112,12 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
       {/* Unified Score Indicator Box */}
       <div className="p-2 rounded-2xl bg-white/5 border border-border-card/30 flex flex-col md:flex-row items-center justify-between gap-5">
         
-        {/* Calculated score: INCREASED BY 20% on Left (AI algorithm based Overall Score out of 10) */}
+        {/* Calculated score: (AI algorithm based Overall Score out of 100) */}
         <div className="flex flex-col items-center justify-center space-y-4 shrink-0 w-full md:flex-1 min-w-[170px]">
           <span className="text-[9px] font-black uppercase tracking-widest text-accent-cyan/85 text-center max-w-[155px] leading-tight">
-            AI algorithm based Overall Score out of 10
+            AI algorithm based Overall Score out of 100
           </span>
-          {/* Sizing increased by 20%: w-16 h-16 -> w-20 h-20, sm:w-20 sm:h-20 -> sm:w-24 sm:h-24, text size -> text-2xl sm:text-3xl */}
+          {/*  */}
           <div className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center border-4 border-dashed transition-all duration-500 z-10 ${
             calcLabel === 'Sell' 
               ? 'overall-glow-red border-accent-red/60 bg-accent-red/5' 
@@ -126,7 +126,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
               : 'overall-glow-green border-accent-green/65 bg-accent-green/5'
           }`}>
             <span className="text-2xl sm:text-3xl font-mono font-black tracking-tight text-white">
-              {calcScore.toFixed(1)}
+              {Math.round(calcScore * 10)}
             </span>
           </div>
         </div>
@@ -141,10 +141,10 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
             </span>
           </div>
 
-          {/* Slider input, 5.0 score circle (increased by 75% to w-14 h-14) & Submit block: Horizontal layout */}
+          {/* Slider*/}
           <div className="flex flex-col items-center justify-center gap-2 w-full">
             
-            {/* Consolidates the 5.0 score circle right here: increased size by 75% to w-14 h-14! */}
+            {/**/}
             <div className="flex items-center justify-center gap-2">
               <TrendingDown className="w-4 h-4 text-accent-red" />
               <div className={`relative w-12 h-12 rounded-full flex items-center justify-center border border-dashed transition-all duration-500 z-10 shrink-0 ${
@@ -161,7 +161,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
               <TrendingUp className="w-4 h-4 text-accent-green" />
             </div>
 
-            {/* The actual slider track - now very clean and spacious inside this container */}
+            {/*slider track */}
             <div className="flex-1 w-full relative py-1">
               <input
                 id="recommendation-score-slider"

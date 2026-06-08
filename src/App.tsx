@@ -160,7 +160,7 @@ function DashboardContent() {
                       <div className="space-y-4">
                         <div className="flex items-center space-x-2 pl-1">
                           <BarChart4 className="w-4 h-4 text-accent-purple" />
-                          <h3 className="font-bold tracking-tight text-text-main text-sm">Algorithm Based total Score and breakup, per Aspects :</h3>
+                          <h3 className="font-bold tracking-tight text-text-main text-sm">Score per Aspects (Algorithm based, max score 10) :</h3>
                           <span className="text-[10px] bg-accent-purple/10 text-accent-purple font-mono px-2 py-0.5 rounded border border-accent-purple/20">
                             8 Models
                           </span>
@@ -404,10 +404,10 @@ function DashboardContent() {
 
       {/* Floating Mini footer details */}
       <footer id="platform-footer" className="text-center py-6 text-[11px] text-text-muted border-t border-border-card/30 mt-auto px-4 max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p>© 2026 Stock Analyzer Inc. Powered by advanced predictive algorithms and automated client caching wrappers.</p>
+        <p>© Copyright Disclaimer with copyrights for 2026-2027. It is not open source and any usage, distribution or mimic will trigger legal proceedings.</p>
         <div className="flex items-center space-x-4">
           <span className="flex items-center text-accent-cyan">
-            <Zap className="w-3.5 h-3.5 mr-1 text-accent-cyan" /> Ready for REST API Integration
+            <Zap className="w-3.5 h-3.5 mr-1 text-accent-cyan" /> Contact for integrating these proprietry Algorithm APIs in your product
           </span>
           <span className="text-text-muted">|</span>
           <span className="hover:text-text-main transition-colors select-all">amber.mails@gmail.com</span>

@@ -135,17 +135,17 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
         <div className="md:w-[45%] flex flex-col space-y-1 p-2 rounded-xl bg-white/[0.02] border border-white/5 w-full">
           
           {/* Header of this User rating section: simple title only */}
-          <div className="text-left">
-            <span className="text-[9px] font-black uppercase tracking-widest text-accent-cyan">
+          <div className="text-center">
+            <span className="text-[10px] font-black uppercase tracking-widest text-accent-cyan">
               USERS Submitted Sentiment Rating (average)
             </span>
           </div>
 
           {/* Slider input, 5.0 score circle (increased by 75% to w-14 h-14) & Submit block: Horizontal layout */}
-          <div className="flex flex-col items-center gap-2 w-full">
+          <div className="flex flex-col items-center justify-center gap-2 w-full">
             
             {/* Consolidates the 5.0 score circle right here: increased size by 75% to w-14 h-14! */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <TrendingDown className="w-4 h-4 text-accent-red" />
               <div className={`relative w-12 h-12 rounded-full flex items-center justify-center border border-dashed transition-all duration-500 z-10 shrink-0 ${
                 currentLabel === 'Sell' 

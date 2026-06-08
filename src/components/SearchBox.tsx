@@ -395,7 +395,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ onSelectStock, selectedSym
       {/* Trending / Active Tickers row */}
       <div id="quick-pills" className="flex flex-wrap items-center gap-1.5 pt-0.5">
         <span className="text-[5px] text-text-muted font-bold flex items-center mr-0.5">
-          <TrendingUp className="w-2 h-2 mr-1.5 text-accent-green animate-pulse animate-bounce" /> Searched Stocks:
+          <TrendingUp className="w-4 h-4 mr-1.5 text-accent-green animate-pulse animate-bounce" /> Searched Stocks:
         </span>
         {MOCK_STOCKS.map(st => (
           <button

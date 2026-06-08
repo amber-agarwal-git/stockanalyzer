@@ -140,10 +140,10 @@ export const StockChart: React.FC<StockChartProps> = ({ stock }) => {
           </span>
         </div>
         <div className="space-y-0.5">
-          <span className="text-[10px] text-text-muted font-bold tracking-wider uppercase block font-sans">Active Interval</span>
+          <span className="text-[10px] text-text-muted font-bold tracking-wider uppercase block font-sans">Chart pattern type</span>
           <span className="font-bold flex items-center space-x-1.5 text-[11px] text-text-muted">
             <RefreshCw className="w-3 h-3 text-accent-purple" />
-            <span>15-Day Cadence</span>
+            <span>Head & Shoulder</span>
           </span>
         </div>
       </div>

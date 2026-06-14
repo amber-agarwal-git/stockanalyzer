@@ -125,7 +125,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
               ? 'overall-glow-amber border-amber-500/60 bg-amber-500/5' 
               : 'overall-glow-green border-accent-green/65 bg-accent-green/5'
           }`}>
-            <span className="text-2xl sm:text-3xl font-mono font-black tracking-tight text-white">
+            <span className="text-2xl sm:text-3xl font-mono font-black tracking-tight text-amber-400">
               {Math.round(calcScore * 10)}
             </span>
           </div>
@@ -154,7 +154,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
                   ? 'overall-glow-amber border-amber-500/60 bg-amber-500/5' 
                   : 'overall-glow-green border-accent-green/65 bg-accent-green/5'
               }`}>
-                <span className="text-sm sm:text-base font-mono font-black tracking-tight text-white">
+                <span className="text-sm sm:text-base font-mono font-black tracking-tight text-amber-400">
                   {sliderVal.toFixed(1)}
                 </span>
               </div>

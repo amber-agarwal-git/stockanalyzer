@@ -41,7 +41,7 @@ export const Tooltip: React.FC<TooltipProps> = ({ content, children, position = 
         <HelpCircle id="tooltip-trigger" className="w-3.5 h-3.5 ml-1.5 text-text-muted hover:text-accent-cyan transition-colors" />
       )}
       {visible && (
-        <div id="tooltip-content" className={`absolute ${positionClasses[position]} w-56 p-2 rounded-lg text-xs leading-relaxed bg-slate-900/98 dark:bg-slate-950/98 text-slate-100 z-50 shadow-2xl border border-white/10 text-center font-normal transition-all duration-200 pointer-events-none`}>
+        <div id="tooltip-content" className={`absolute ${positionClasses[position]} w-56 p-2 rounded-lg text-xs leading-relaxed bg-slate-900/98 dark:bg-slate-950/98 text-slate-100 z-[9999] shadow-2xl border border-white/10 text-center font-normal transition-all duration-200 pointer-events-none`}>
           {content}
           <div className={`absolute border-4 border-transparent ${arrowClasses[position]}`}></div>
         </div>

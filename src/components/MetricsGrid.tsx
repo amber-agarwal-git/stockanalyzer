@@ -55,7 +55,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
     <div className="flex items-center justify-between py-2.5 border-b border-border-card/40 last:border-0 hover:bg-white/5 px-2 rounded-lg transition-colors">
       <div className="flex items-center space-x-1.5 min-w-0">
         <span className="text-xs font-semibold text-text-muted truncate">{label}</span>
-        <Tooltip content={info} position="bottom">
+        <Tooltip content={info} position="top">
           <button className="text-text-muted hover:text-accent-cyan p-0.5 outline-none" aria-label={`Info about ${label}`}>
             <Info className="w-3.5 h-3.5 shrink-0 hover:scale-105" />
           </button>
@@ -86,7 +86,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Fundamental Analysis</h3>
-              <Tooltip content="Fundamental valuation checks: Examines earnings yields, P/E multiples, balance sheet leverages, book equity returns, and net global margins." position="bottom" />
+              <Tooltip content="Fundamental valuation checks: Examines earnings yields, P/E multiples, balance sheet leverages, book equity returns, and net global margins." position="top" />
             </div>
           </div>
 
@@ -185,7 +185,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Technical Analysis</h3>
-              <Tooltip content="Technical oscillators check: Calculates buying fatigue (RSI), moving average cross indicators (MACD), consolidated momentum volumes, and 52-week position percentile bands." position="bottom" />
+              <Tooltip content="Technical oscillators check: Calculates buying fatigue (RSI), moving average cross indicators (MACD), consolidated momentum volumes, and 52-week position percentile bands." position="top" />
             </div>
           </div>
 
@@ -259,7 +259,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Sector Analysis</h3>
-              <Tooltip content="Peer group standings: Benchmarks the equity against industry sector valuations, sector compound growths, ROE percentiles, and median margin ranks." position="bottom" />
+              <Tooltip content="Peer group standings: Benchmarks the equity against industry sector valuations, sector compound growths, ROE percentiles, and median margin ranks." position="top" />
             </div>
           </div>
 
@@ -333,7 +333,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Momentum Analysis</h3>
-              <Tooltip content="Trend velocity parameters: Measures multi-month relative stock-price breakouts and comparative index performance (relative strength scaling factors)." position="bottom" />
+              <Tooltip content="Trend velocity parameters: Measures multi-month relative stock-price breakouts and comparative index performance (relative strength scaling factors)." position="top" />
             </div>
           </div>
 
@@ -407,7 +407,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Growth Analysis</h3>
-              <Tooltip content="Growth velocity checks: Examines compound earnings growth rates, revenue CAGR over 3 years, free cash flows, and overall balance sheet health indicators." position="bottom" />
+              <Tooltip content="Growth velocity checks: Examines compound earnings growth rates, revenue CAGR over 3 years, free cash flows, and overall balance sheet health indicators." position="top" />
             </div>
           </div>
 
@@ -486,7 +486,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Valuation Analysis</h3>
-              <Tooltip content="Equity pricing multiples and conservative asset valuations: Computes Benjamin Graham index bounds, discounted cash flows, and EV/EBITDA models." position="bottom" />
+              <Tooltip content="Equity pricing multiples and conservative asset valuations: Computes Benjamin Graham index bounds, discounted cash flows, and EV/EBITDA models." position="top" />
             </div>
           </div>
 
@@ -558,7 +558,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Sentimental Analysis</h3>
-              <Tooltip content="Market perception and option statistics: Evaluates online news media coverage with NLP semantic models, derivative pricing ratios, and ownership percentages." position="bottom" />
+              <Tooltip content="Market perception and option statistics: Evaluates online news media coverage with NLP semantic models, derivative pricing ratios, and ownership percentages." position="top" />
             </div>
           </div>
 
@@ -637,7 +637,7 @@ export const MetricsGrid: React.FC<MetricsGridProps> = ({ stock }) => {
             </div>
             <div className="flex items-center space-x-1 sm:space-x-1.5 min-w-0">
               <h3 className="text-xs xs:text-sm md:text-base font-bold tracking-tight text-text-main whitespace-nowrap">Risk/Reward Analysis</h3>
-              <Tooltip content="Financial risk metrics and pricing models: Gauges volatility indices, standard deviations, risk-adjusted yields, and calculated DCF margins." position="bottom" />
+              <Tooltip content="Financial risk metrics and pricing models: Gauges volatility indices, standard deviations, risk-adjusted yields, and calculated DCF margins." position="top" />
             </div>
           </div>
 
